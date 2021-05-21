@@ -3,18 +3,20 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
+	app        = kingpin.New("App", "Simple app")
 	argAppName = kingpin.Arg("name", "Application name").Required().String()
 	argPort    = kingpin.Arg("port", "Web server port").Default("9000").Int()
 )
 
 func main() {
-	kingpin.Parse()
+	kingpin.MustParse(app.Parse(os.Args[1:]))
 
 	// more code here ...
 	appName := *argAppName
