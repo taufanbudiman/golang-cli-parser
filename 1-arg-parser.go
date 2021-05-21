@@ -11,8 +11,8 @@ import (
 
 var (
 	app        = kingpin.New("App", "Simple app")
-	argAppName = kingpin.Arg("name", "Application name").Required().String()
-	argPort    = kingpin.Arg("port", "Web server port").Default("9000").Int()
+	argAppName = app.Flag("name", "Application name").Required().String()
+	argPort    = app.Flag("port", "Web server port").Short('p').Default("9000").Int()
 )
 
 func main() {
